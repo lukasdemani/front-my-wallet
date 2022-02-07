@@ -28,6 +28,10 @@ export default function Transactions() {
     navigate('/');
   }
 
+  function insertDecimal(num){
+    return (Math.round(num * 100) / 100).toFixed(2);
+  }
+
   return (
     <Container>
       <Header>
@@ -40,7 +44,7 @@ export default function Transactions() {
             <Transaction>
               <Day>{transaction.time}</Day>
               <Description>{transaction.description}</Description>
-              <Value color={transaction.type}>{transaction.value}</Value>
+              <Value color={transaction.type}>{insertDecimal(transaction.value)}</Value>
             </Transaction>
           ))
         :
@@ -50,7 +54,7 @@ export default function Transactions() {
         {allTransactions.length !== 0 &&
           <Total>
             <span>SALDO</span>
-            <div>{total}</div>
+            <div>{insertDecimal(total)}</div>
           </Total>  
         }     
       </Historic>

@@ -5,7 +5,6 @@ import { Login, Signup, Transactions, In, Out } from "./pages";
 export default function App() {
   return (
     <AuthProvider>
-      <ProgressProvider>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Login />} />
@@ -15,7 +14,6 @@ export default function App() {
             <Route path="/transactions/out" element={<Out />} />
           </Routes>
         </BrowserRouter>
-      </ProgressProvider>
     </AuthProvider>
   );
 }
