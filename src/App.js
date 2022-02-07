@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
-import { ProgressProvider } from "./contexts/PercentageContext";
 import { Login, Signup, Transactions, In, Out } from "./pages";
 
 export default function App() {

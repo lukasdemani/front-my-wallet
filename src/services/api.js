@@ -41,21 +41,12 @@ function getTotal(token) {
   return promise;
 }
 
-function getDailyHistory(token) {
-  const config = createConfig(token);
-
-  const promise = axios.get(`${BASE_URL}/habits/history/daily`, config);
-
-  return promise;
-}
-
 const api = {
   login,
   signUp,
   registerTransaction,
   getTransactions,
-  getTotal,
-  getDailyHistory
+  getTotal
 }
 
 export default api;
