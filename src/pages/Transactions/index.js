@@ -11,7 +11,6 @@ export default function Transactions() {
   const [allTransactions, setAllTransactions] = useState([]);
   const [total, setTotal] = useState(0);
 
-
   const promise = api.getTransactions(auth.token);
 
   useEffect(() => {
@@ -20,32 +19,40 @@ export default function Transactions() {
       setAllTransactions(response.data.transactions);
     });
     promise.catch((error) => {
-  
       console.log(error);
     });
 
   }, []);
 
-  console.log(total);
+  function handleLogout() {
+    navigate('/');
+  }
+
   return (
     <Container>
       <Header>
         Olá, {auth.name}
-        <ion-icon name="exit-outline"></ion-icon>
+        <ion-icon name="exit-outline" onClick={() => handleLogout()}></ion-icon>
       </Header>
       <Historic>
-        {allTransactions.map((transaction) => (
-          <Transaction>
-            <Day>{transaction.time}</Day>
-            <Description>{transaction.description}</Description>
-            <Value color={transaction.type}>{transaction.value}</Value>
-          </Transaction>
-        ))}
-
-        <Total>
-          <span>SALDO</span>
-          <div>{total}</div>
-        </Total>
+        {allTransactions.length !== 0 ? 
+          allTransactions.map((transaction) => (
+            <Transaction>
+              <Day>{transaction.time}</Day>
+              <Description>{transaction.description}</Description>
+              <Value color={transaction.type}>{transaction.value}</Value>
+            </Transaction>
+          ))
+        :
+            <p>Não há registros de<br />
+            entrada ou saída</p>
+          }
+        {allTransactions.length !== 0 &&
+          <Total>
+            <span>SALDO</span>
+            <div>{total}</div>
+          </Total>  
+        }     
       </Historic>
 
       <Footer>

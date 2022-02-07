@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Logo from "../../assets/img/logo.svg";
 import api from "../../services/api";
 import useAuth from "../../hooks/useAuth";
@@ -7,7 +7,7 @@ import { Container, Form, Input, Button, StyledLink } from "../../components/For
 
 export default function Login() {
   const [formData, setFormData] = useState({ email: '', password: '' })
-  const { auth, login } = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   // useEffect(() => {
@@ -30,7 +30,6 @@ export default function Login() {
       navigate("/transactions");
     });
     promise.catch(() => {
-
       alert('Erro, tente novamente');
     });
   }

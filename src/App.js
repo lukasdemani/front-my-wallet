@@ -1,10 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
 import { AuthProvider } from "./contexts/AuthContext";
 import { ProgressProvider } from "./contexts/PercentageContext";
 import { Login, Signup, Transactions, In, Out } from "./pages";
-
-export const pathsWithoutHeaderAndMenu = ['/', '/signup'];
 
 export default function App() {
   return (

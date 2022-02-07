@@ -10,7 +10,13 @@ const Historic = styled.div`
     justify-content: top;
     border-radius: 5px;
     color: #000000;
+    overflow: scroll;
 
+    p {
+        color: #868686;
+        font-size: 20px;
+        margin: auto;
+    }
 `;
 
 export default Historic;

@@ -10,11 +10,14 @@ const Total = styled.div `
     span {
         font-weight: bold;
         padding-left: 15px;
+        margin-top: 15px;
     }
 
     div {
         color: #03AC00;
         padding-right: 10px;
+        margin-top: 15px;
+
     }
 
 `

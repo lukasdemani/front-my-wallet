@@ -1,19 +1,13 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import Logo from "../../assets/img/logo.svg";
+import { useState } from "react";
 import api from "../../services/api";
 import useAuth from "../../hooks/useAuth";
-import { Container, Form, Input, Button, StyledLink } from "../../components/FormComponents";
+import { Container, Form, Input, Button, Header } from "../../components/FormComponents";
 
 export default function In() {
-  const [formData, setFormData] = useState({ value: '', description: '', type: 'in' })
+    const { auth } = useAuth();
+  const [formData, setFormData] = useState({ value: '', description: '', type: 'in', email: auth.emailResponse })
   const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   if (auth && auth.token) {
-  //     navigate("/transactions");
-  //   }
-  // }, []);
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,11 +15,8 @@ export default function In() {
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    console.log({ ...formData })
+  
     const promise = api.registerTransaction({ ...formData });
-
-    
 
     promise.then((response) => {
       navigate("/transactions");
@@ -38,7 +29,7 @@ export default function In() {
 
   return (
     <Container>
-
+        <Header>Nova entrada</Header>
       <Form onSubmit={handleSubmit}>
         <Input
           type="number"

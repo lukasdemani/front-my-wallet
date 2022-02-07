@@ -25,6 +25,7 @@ function registerTransaction(body) {
 }
 
 function getTransactions(token) {
+
   const config = createConfig(token);
 
   const promise = axios.get(`${BASE_URL}/transactions`, config);
